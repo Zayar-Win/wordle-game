@@ -1,38 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: "Roboto", sans-serif;
+}
+
+.dark {
+  background-color: #333;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App h2 {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(222, 216, 216);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.row > div {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.row > div.green {
+  --background: #5ac85a;
+  --border-color: #5ac85a;
+  animation: flip 0.5s ease forwards;
+}
+.row > div.grey {
+  --background: #a1a1a1;
+  --border-color: #a1a1a1;
+  animation: flip 0.6s ease forwards;
+}
+.row > div.yellow {
+  --background: #e2cc68;
+  --border-color: #e2cc68;
+  animation: flip 0.5s ease forwards;
+}
+.row > div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.row > div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.row > div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.row > div:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.row > div:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.row.current > div.filled {
+  animation: bounce 0.2s ease-in-out;
+}
+
+.keyboard {
+  max-width: 500px;
+  margin: 0px auto;
+  margin-top: 30px;
+}
+
+.keyboard > div {
+  width: 40px;
+  height: 50px;
+  display: inline-block;
+  background-color: #eee;
+  line-height: 50px;
+  margin: 4px;
+  border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.keyboard > div.big {
+  width: max-content;
+  padding: 0px 10px;
+}
+
+.keyboard > div.green {
+  background: #5ac85a;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+.keyboard > div.yellow {
+  background: #e2cc68;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+.keyboard > div.grey {
+  background: #a1a1a1;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.container > .wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  padding: 30px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+}
+.wrapper h1 {
+  text-transform: uppercase;
+  font-size: 25px;
+  margin: 20px 0px;
+}
+
+.wrapper p {
+  font-size: 19px;
+  color: rgb(110, 102, 102);
+  margin-bottom: 10px;
+}
+
+.wrapper p span {
+  color: red;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1.1px;
+}
+
+.wrapper h4 {
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.wrapper button {
+  width: 50%;
+  align-self: center;
+  padding: 10px;
+  background-color: #5ac85a;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+    border-color: #ddd;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    border-color: #333;
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+    background: #fff;
+    border-color: #333;
+  }
+  45% {
+    transform: rotateX(90deg);
+    background: white;
+    border-color: #333;
+  }
+  55% {
+    transform: rotateX(90deg);
+    background: var(--background);
+    border-color: var(--border-color);
+  }
+  100% {
+    transform: rotateX(0deg);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #eee;
   }
 }
